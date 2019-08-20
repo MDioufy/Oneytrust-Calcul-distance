@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Distance calculate!{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}" /> {# v 4.1.3 #}
+    </head>
+    <body>
+        <div class="container-fluid {% block container_class %} mt-5 p-1{% endblock %}">
+            {# messages flash #}
+            <div id="alert-messages">
+            {% for label, messages in app.flashes %}{% for message in messages %}
+                <div class="text-center alert alert-{{ label }}">
+                    <a class="close" data-dismiss="alert">×</a>
+                    <span>{{ message | trans }}</span>
+                </div>
+            {% endfor %}{% endfor %}
+            </div>
+    
+            {% block content %}
+                {# Inclure le contenu des pages ici #}
+            {% endblock %}
+        </div>
+        
+        {% block body %}{% endblock %}
+        {# Inclure les dépendences js communes à toutes les pages #}
+        <script src="{{ asset('js/jquery/jquery.min.js') }}"></script> {# v 3.3.1 #}
+        <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script> {# v 4.1.3 #}
+        {% block specific_javascript_libs %}{# Ici pour inclure des dépendences js spécifiques à des pages #}{% endblock %}
+        {% block specific_javascript  %}{# Pour inclure du custom js spécifiques à des pages #}{% endblock %}
+    </body>
+</html>

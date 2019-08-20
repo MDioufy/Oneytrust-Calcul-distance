@@ -1,0 +1,23 @@
+{% extends 'form_layout.html.twig' %}
+
+{% block form_content %}
+    <div class="form-group row text-secondary">
+        {% if form is defined %}
+            <div class="col-sm-3 text-sm-right font-weight-bold">
+                {{ form_label(form.address-from) }}
+            </div>
+            <div class="col-sm-5 mb-2">
+                {{ form_widget(form.address-from, {'attr': {'class': 'form-control'} }) }}
+                <div class="text-om-danger font-weight-bold">{{ form_errors(form.name)|striptags|raw }}</div>
+            </div>
+            <div class="col-sm-3 text-sm-right font-weight-bold">
+                {{ form_label(form.address-to) }}
+            </div>
+            <div class="col-sm-5 mb-2">
+                {{ form_widget(form.address-to, {'attr': {'class': 'form-control'} }) }}
+                <div class="text-om-danger font-weight-bold">{{ form_errors(form.email)|striptags|raw }}</div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+

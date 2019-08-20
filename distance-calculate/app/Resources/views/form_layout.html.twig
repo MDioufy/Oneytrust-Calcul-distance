@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    {% block form_balise %}{% if form is defined %}{{ form_start(form, {'attr': {'enctype' : "multipart/form-data"} }) }}{% endif %}{% endblock %}
+    <div class="col-12 mt-sm-5 scroll-y">
+        <div class="bg-om-light shadow rounded p-2 p-sm-4 text-om-secondary">
+            {% block form_content %}
+ 
+            {% endblock %}                      
+            <button type="submit" class="btn bg-success text-white m-2">Calculer</button>
+        </div>
+    </div>    
+    {% block form_end %}{% if form is defined %}{{ form_end(form) }}{% endif %}{% endblock %}
+{% endblock %}
+
+{% block specific_javascript_libs %}
+    {% if form is defined %}
+    <script src="{{ asset('js/jquery/jquery.validate.min.js') }}"></script>{# v.1.19.0 #}
+    {% endif %}
+{% endblock %}
+
+{% block specific_javascript %}
+    {% if form is defined %}
+    <script src="{{ asset('js/custom/form.js') }}"></script>
+    {% endif %}
+    {% block specific_form_javascript %}{# Ici pour inclure du js spécifique à une page de formulaire #}{% endblock %}
+{% endblock %}

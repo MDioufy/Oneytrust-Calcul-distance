@@ -1,0 +1,53 @@
+{% extends 'form_layout.html.twig' %}
+{% block form_content %}
+        {% if form is defined %}
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header"> Adresse de départ</div>
+                        <div class="card-body">
+                            {% for child in form.children %}
+                                {% if child.vars.name in ['RueDepart', 'CpDepart', 'VilleDepart', 'PaysDepart'] %}
+                                    <div class="form-group row text-secondary">
+                                        <div class="col-sm-2 text-sm-right">{{ form_label(child) }}</div>
+                                        <div class="col-sm-8">
+                                        {% if child.vars.name == 'submit'%}
+                                            {{ form_widget(form.submit, { 'label': 'Calculer' }) }}
+                                        {%else%}
+                                             {{ form_widget(child, {'attr': {'class': 'form-control'} }) }}
+                                        {% endif%} 
+
+                                        </div> 
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header"> Adresse de destination</div>
+                        <div class="card-body">
+                            {% for child in form.children %}
+                                {% if child.vars.name in ['RueArrivee', 'CpArrivee', 'VilleArrivee', 'PaysArrivee'] %}
+                                    <div class="form-group row text-secondary">
+                                        <div class="col-sm-2 text-sm-right">{{ form_label(child) }}</div>
+                                        <div class="col-sm-8">
+                                        {% if child.vars.name == 'submit'%}
+                                            {{ form_widget(form.submit, { 'label': 'Calculer' }) }}
+                                        {%else%}
+                                             {{ form_widget(child, {'attr': {'class': 'form-control'} }) }}
+                                        {% endif%} 
+
+                                        </div> 
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        {% endif %}
+{% endblock %}
+
